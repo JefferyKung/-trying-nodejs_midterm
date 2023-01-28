@@ -1,0 +1,49 @@
+<%- include("_header") -%>
+
+<header class="masthead" style="background-image: url('https://images.pexels.com/photos/7054400/pexels-photo-7054400.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="post-heading">
+                    <h1 class="mb-1 text-warning"><%= model.Title %></h1>
+                    <span class="meta">
+                        
+                        
+                        <div class="badge bg-success mb-3 mt-2">
+                            <%= model.Date.toLocaleDateString() %>
+                          </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<a href="/books/edit/<%= model.Book_ID %>" class="btn btn-info">Edit</a>
+
+<div class="Context mt-4 mb-4 px-4 px-lg-5 h5 " >
+  <%- model.Author %>
+</div>
+
+<div >
+    <h3>Comments</h3>
+</div>
+
+<!-- <div class="mt-4 mb-4 px-4 px-lg-5 h5">
+    <% modelC.forEach(c => { %>
+    <ul>
+        <li><%=c.commentID %></li>
+        <li><%=c.Comment %></li>
+    </ul>
+    
+    
+    <% }) %>  
+</div> -->
+
+<!-- <%- modelC.Comment %> -->
+
+
+
+<div class="h3 mt-5"> Like： <%- model.Likes %> </div>
+
+<%- include("_footer") -%>

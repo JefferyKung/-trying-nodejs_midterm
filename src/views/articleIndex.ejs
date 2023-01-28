@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Blog</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Log out</a>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/books/all">Table Articles</a>
+        
+      </li>
+      <a class="nav-link" href="/books/blog">Blog Articles</a>
+    </ul>
+  </nav>
+  <header class="masthead" style="background-image: url('https://images.pexels.com/photos/1939485/pexels-photo-1939485.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>Jeffery's blog (<%= model.length %>)</h1>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+  <div class="container">
+    <br>
+    <a href="/books/create" class="btn btn-success">New Article</a>
+
+    <% model.forEach(article => { %>
+      <div class="card mt-4 mb-4">
+        <div class="card-body">
+          <h4 class="card-title mb-3"><%= article.Title %></h4>
+          <div class="card-subtitle text-muted mb-2">
+            <%= article.Date.toLocaleDateString() %>
+          </div>
+          <div class="card-text mb-3"><%= article.Author.substring(0, 180) %>  ............</div>
+          <a href="/books/indie/<%= article.Book_ID %>" class="btn btn-primary">Read More</a>
+          <a href="/books/edit/<%= article.Book_ID %>" class="btn btn-info">Edit</a>
+          <!-- <div class="btn btn-warning">Like</div> -->
+          <form action="/books/editlikesB/<%= article.Book_ID %>?_method=POST" method="post" style="display: inline-block;">
+            <input type="submit" value="+" class="btn btn-sm btn-warning" />
+          </form>
+          <div class="btn btn-warning"><%= article.Likes %></div>
+          <form action="/books/delete/<%= article.Book_ID %>?_method=DELETE" method="POST" class="d-inline">
+            <button type="submit" class="btn btn-danger">Delete</button>
+          </form>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</body>
+</html>
