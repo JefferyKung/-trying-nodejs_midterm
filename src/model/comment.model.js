@@ -6,7 +6,7 @@ module.exports = class Comment {
         this.Comment=Comment;
     }
 
-    save() {
+     save() {
         const sql = "INSERT INTO Comments (Book_Id,Comment) VALUES (?,?)";
         const params = [this.Book_Id,this.Comment];
     

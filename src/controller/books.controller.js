@@ -58,49 +58,23 @@ exports.getToOneArticlePage = (req, res) => {
       res.render("indieArticle", { model: row[0] },
       );
     })
-    // .then(Comment.findById(id).then(([row2]) => {
-    //     console.log(row2)
-    //     res.render("indieArticle", { modelC: row2 });
-    //     }))
     .catch((err) => console.error(err.message));
 };
 
-exports.getToOneArticlePage3 = (req, res) => {
+
+exports.getToOneArticlePage2 = async(req,res,next) =>{
   const id = req.params.id;
-  let view_data = {};
-  console.log(id)
-  Book.findById(id)
-    .then(([book_row]) => {
-      view_data.books = book_row;
-      // console.log(book_row)
-      return Comment.findById(id);
-    })
-    .then(([comment_row])=>{
-      view_data.comments = comment_row;
-      // console.log(console.log(book_row))
-    })
-    .then(
-      console.log(view_data.books)
-      // console.log(view_data.books);
-      // res.render("indieArticle",{
-      //   model: view_data.books[0],
-      //   modelC: view_data.comments
-      // })
-    )
-    .then(
-      res.redirect('/')
-    )
-    .catch((err) => console.error(err.message));
-};
+  
+  const articlePrimeData = await Book.findById(id)
+  const commentData = await Comment.findById(id)
+  console.log(articlePrimeData[0])
+  console.log(commentData[0])
+  res.render("indieArticle",{
+    model: articlePrimeData[0][0],
+    modelC: commentData[0]
+  })
 
-// exports.getToOneArticlePage2 = async(req,res,next) =>{
-//   const id = req.params.id;
-  // res.render("indieArticle",{
-  //   model: (await Book.findById(id))[0],
-  //   modelC: (await Comment.findById(id))
-  // })
-
-// }
+}
 
 exports.postEditBookById = (req, res) => {
   const id = req.params.id;
@@ -136,4 +110,38 @@ exports.addLikeB = (req, res)=>{
   Book.likePlusOne(id).then(()=>{res.redirect("/books/blog")}).catch((err) => console.error(err.message))
   
   
+}
+
+exports.addLikeIndiePage = async(req, res , next)=>{
+  const id = req.params.id;
+  const likeData = await Book.likePlusOne(id)
+  const articlePrimeData = await Book.findById(id)
+  const commentData = await Comment.findById(id)
+  
+  console.log(articlePrimeData[0])
+  console.log(commentData[0])
+  res.render("indieArticle",{
+    model: articlePrimeData[0][0],
+    modelC: commentData[0]
+  })
+}
+
+exports.addCommentIndiePage = async(req, res , next)=>{
+  const id = req.params.id;
+
+  const {comment } = req.body;
+  const newComment = new Comment (id, comment)
+ 
+
+  await newComment.save()
+  console.log(req.body)
+  const articlePrimeData = await Book.findById(id)
+  const commentData = await Comment.findById(id)
+  
+  console.log(articlePrimeData[0])
+  console.log(commentData[0])
+  res.render("indieArticle",{
+    model: articlePrimeData[0][0],
+    modelC: commentData[0]
+  })
 }

@@ -11,7 +11,9 @@ const {
   addLike,
   getAllBlog,
   addLikeB,
-  getToOneArticlePage3
+  getToOneArticlePage2,
+  addLikeIndiePage,
+  addCommentIndiePage
 } = require("../controller/books.controller");
 
 const {
@@ -27,7 +29,10 @@ router.post("/create", postCreateBook);
 router.delete("/delete/:id", deleteBook);
 router.post("/editlikes/:id",addLike)
 router.post("/editlikesB/:id",addLikeB)
-router.get("/indie/:id",getToOneArticlePage3)
+router.post('/editlikesB/indie/:id',addLikeIndiePage)
+router.post('/addComment/indie/:id',addCommentIndiePage)
+router.get("/indie/:id",getToOneArticlePage2)
+
 // router.get("/indie/:id",getCommentById)
 
 module.exports = router;

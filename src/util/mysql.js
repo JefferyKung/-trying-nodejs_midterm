@@ -145,7 +145,7 @@ const seedDB3 = () => {
 
   pool.query(
     `CREATE TABLE Comments(
-      commentID INT(50) PRIMARY KEY,
+      commentID INT(50) PRIMARY KEY AUTO_INCREMENT,
       Book_Id INT(50),
       Comment TEXT,
       FOREIGN KEY(Book_Id) REFERENCES Books(Book_Id) ON DELETE CASCADE ON UPDATE CASCADE

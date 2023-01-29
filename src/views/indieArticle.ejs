@@ -27,23 +27,34 @@
 
 <div >
     <h3>Comments</h3>
+    <% modelC.forEach(c => { %>
+        <ul>
+            <!-- <li>No. ：　<%=c.commentID %></li> -->
+            <li>Someone said ：　<%=c.Comment %></li>
+        </ul>
+        
+        
+        <% }) %> 
+  
 </div>
 
-<!-- <div class="mt-4 mb-4 px-4 px-lg-5 h5">
-    <% modelC.forEach(c => { %>
-    <ul>
-        <li><%=c.commentID %></li>
-        <li><%=c.Comment %></li>
-    </ul>
-    
-    
-    <% }) %>  
-</div> -->
+<div>
+    <form action="/books/addComment/indie/<%= model.Book_ID %>?_method=POST" method="post">
+        <input type="submit" value="add comment" class="btn btn-sm btn-primary" />
+            <div class="form-group row">
+                <label class="col-form-label col-sm-2" for="comment">Comments</label>
 
-<!-- <%- modelC.Comment %> -->
-
-
+                <div class="col-sm-10">
+                    <textarea class="form-control" cols="20" name="comment" maxlength="32000" rows="3.5">write some new comment</textarea>
+                </div>
+            </div>
+    </form>
+</div>
 
 <div class="h3 mt-5"> Like： <%- model.Likes %> </div>
+<form action="/books/editlikesB/indie/<%= model.Book_ID %>?_method=POST" method="post" style="display: inline-block;">
+    <input type="submit" value="+" class="btn btn-sm btn-warning" />
+  </form>
+
 
 <%- include("_footer") -%>
