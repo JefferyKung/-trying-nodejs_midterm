@@ -55,13 +55,3 @@ My teacher Francois's styling and table structure.
 [structure of blog] Basically I didn't restructure the blog part. It's more like a thread/ table. -> NODEJS 202  
 <!-- https://github.com/A-0522/NodeJS-W2-D2 -->  
 
-<!-- <div class="mt-4 mb-4 px-4 px-lg-5 h5">
-    <% modelC.forEach(c => { %>
-    <ul>
-        <li><%=c.commentID %></li>
-        <li><%=c.Comment %></li>
-    </ul>
-    
-    
-    <% }) %>  
-</div> -->
