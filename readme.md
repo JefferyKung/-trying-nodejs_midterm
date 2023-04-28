@@ -1,4 +1,7 @@
-https://node-js-jeffery-mid-jefferykung.vercel.app/
+https://node-js-jeffery-mid-jefferykung.vercel.app/  
+
+_**(Sorry my railway app usage was max out, So this page don't work anymore)**_
+
 
 # 1. Project's Title
 Jeffery's mid-term project for NodeJS (V2)
@@ -14,24 +17,37 @@ It's a CRUD application for a easy table thread/blog.
 
 # 3. How to Install and Run the Project
 
-npm i
+git clone  
+
+Set up env file(Please register on your own service)  
+``` 
+MYSQL_HOST='containers-us-west-131.railway.app'
+MYSQL_USER='root'
+MYSQL_PASS=''
+MYSQL_DBNAME='railway'
+MYSQL_PORT='' 
+```
+
+npm i  
 // to install dependencies 
 
-npm run dev
-// run with nodemon
+npm run dev  
+// run with nodemon  
+  
+
 
 # 4. How to Use the Project
 
---new V2--
-(1) click "Blig Articles" for going to a blog format page, it's more like a blog we are used to. 
-(1-1)I cut article less than 180 words for preview
-(2)Click "Read more" for going to respective page
-(3)you can write comment in the text area and click the blue "add comment" button to push the lastest one on to the page.
+--new V2--  
+(1) click "Blig Articles" for going to a blog format page, it's more like a blog we are used to.  
+(1-1)I cut article less than 180 words for preview  
+(2)Click "Read more" for going to respective page  
+(3)you can write comment in the text area and click the blue "add comment" button to push the lastest one on to the page.  
 
--- v1 --
-(1.)login page with user authentication. I connect it to a MySQL database and store all the credencials. 
-If you successfully log in, you'll be redirect to the article page. If you don't, a JSON message will show you 'no match'
-(1-1) you can also click sign up to a register page. email and password will be store in database on railway.  
+-- v1 --  
+(1.)login page with user authentication. I connect it to a MySQL database and store all the credencials.  
+If you successfully log in, you'll be redirect to the article page. If you don't, a JSON message will show you 'no match'  
+(1-1) you can also click sign up to a register page. email and password will be store in database on railway.   
 (2-1)you can read the article page with all content so far.  
 (2-2)Click "add" to create new article, the input date must be a YYYYMMDD.  
 (2-3)Click the yellow "Edit" button to edit the particular post.  
@@ -46,7 +62,7 @@ If you successfully log in, you'll be redirect to the article page. If you don't
 
 # 5. Include Credits
 
---v1--
+--v1--  
 My teacher Francois's styling and table structure.  
 
 [styling] login page -> I used his code on lecture which is NODEJS LAB5  
